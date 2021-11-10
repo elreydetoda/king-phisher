@@ -14,5 +14,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN cp ./docker/entrypoint.sh /usr/local/bin/
 
-RUN set -ex && ./tools/install.sh --skip-client --no \
+RUN set -ex && apt update && apt install -y python3-pip \
+        && ./tools/install.sh --skip-client --no \
         && rm -rf /var/lib/apt/lists/*
